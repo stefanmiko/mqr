@@ -1,0 +1,13 @@
+{
+	"comment": "",
+	"ignore": "",
+	"package": [
+		{
+			"checksumSHA1": "T1C06LmkZjReTIjKQJYeXUvhUkU=",
+			"path": "github.com/bbrks/wrap",
+			"revision": "00e126d273b1b1cc56fda0d1cb38494ca64acebe",
+			"revisionTime": "2017-04-05T21:37:59Z"
+		}
+	],
+	"rootPath": "github.com/aboutsko/mqr"
+}
