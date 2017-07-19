@@ -3,6 +3,12 @@
 	"ignore": "",
 	"package": [
 		{
+			"checksumSHA1": "upCMbDOuxDNIyYzlqdhQgLk8RUw=",
+			"path": "github.com/aboutsko/medium",
+			"revision": "070e6ba17b04f3b2ee8d77e2cff52a5d58f5ce13",
+			"revisionTime": "2017-07-19T20:14:33Z"
+		},
+		{
 			"checksumSHA1": "T1C06LmkZjReTIjKQJYeXUvhUkU=",
 			"path": "github.com/bbrks/wrap",
 			"revision": "00e126d273b1b1cc56fda0d1cb38494ca64acebe",

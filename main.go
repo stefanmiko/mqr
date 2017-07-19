@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/aboutsko/mqr/lib/medium"
+	"github.com/aboutsko/medium"
 )
 
 func main() {
@@ -19,6 +19,6 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		fmt.Print(article.Format())
+		fmt.Print(article)
 	}
 }
