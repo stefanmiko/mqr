@@ -1,9 +1,13 @@
 # mqr
+
 Medium Quick Reader
 
-#### Not reviewed/bulletproofed/cleaned, working nonetheless
+# Demo
 
-# Quick usage
+![alt text](https://raw.githubusercontent.com/aboutsko/mqr/master/resources/demo.gif)
+
+
+# Usage
 
     # To list most popular articles
     $ ./mqr 
