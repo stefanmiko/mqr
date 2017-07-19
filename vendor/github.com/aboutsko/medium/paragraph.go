@@ -12,15 +12,16 @@ type Paragraph struct {
 	Type int    `json:"type"`
 }
 
-func (p *Paragraph) Format() string {
-	formatted := wrap.Wrap(p.Text, 80)
-	if p.Type == 3 {
+func (paragraph *Paragraph) String() string {
+	formatted := wrap.Wrap(paragraph.Text, 80)
+	if paragraph.Type == 3 {
 		formatted = fmt.Sprintf("\033[1m%s\033[0m", formatted)
 	}
 
-	if p.Type > 1 {
+	if paragraph.Type > 1 {
 		formatted = fmt.Sprintf("%s", formatted)
 	}
 
 	return formatted
+
 }
