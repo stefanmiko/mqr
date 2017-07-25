@@ -6,6 +6,7 @@ import (
 	"github.com/bbrks/wrap"
 )
 
+//Paragraph is a section of a bodyModel
 type Paragraph struct {
 	Name string `json:"name"`
 	Text string `json:"text"`

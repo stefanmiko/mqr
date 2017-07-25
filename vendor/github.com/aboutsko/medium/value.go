@@ -2,15 +2,10 @@ package medium
 
 import "fmt"
 
-type Url string
-
+//Value is the post detail
 type Value struct {
 	Content      *Content `json:"content"`
-	CanonicalURL Url      `json:"canonicalUrl"`
-}
-
-func (url *Url) String() string {
-	return fmt.Sprintf("url: \033[32m%s\033[0m", url)
+	CanonicalURL string   `json:"canonicalUrl"`
 }
 
 func (value *Value) String() string {

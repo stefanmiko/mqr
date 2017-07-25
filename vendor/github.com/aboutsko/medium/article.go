@@ -7,9 +7,10 @@ import (
 	"net/http"
 )
 
-var URL_TOP = "https://medium.com/topic/popular?format=json"
-var URL_POST = "https://medium.com/p/%s?format=json"
+var urlTop = "https://medium.com/topic/popular?format=json"
+var urlPost = "https://medium.com/p/%s?format=json"
 
+//Article is the root response structure from medium get apis
 type Article struct {
 	Payload *Payload `json:"payload"`
 }
@@ -18,11 +19,17 @@ func (article *Article) String() string {
 	return fmt.Sprintf("%s", article.Payload)
 }
 
-func GetArticle(articleId string) (*Article, error) {
-	url := URL_TOP
-	if articleId != "" {
-		url = fmt.Sprintf(URL_POST, articleId)
-	}
+//GetMostPopularPosts returns unlogged most popular posts (medium.com/topic/popular homepage)
+func GetMostPopularPosts() (*Article, error) {
+	return getURL(urlTop)
+}
+
+//GetArticle returns one article identified by its uid
+func GetArticle(articleID string) (*Article, error) {
+	return getURL(fmt.Sprintf(urlPost, articleID))
+}
+
+func getURL(url string) (*Article, error) {
 	response, err := http.Get(url)
 	if err != nil {
 		return nil, err

@@ -3,10 +3,10 @@
 	"ignore": "",
 	"package": [
 		{
-			"checksumSHA1": "upCMbDOuxDNIyYzlqdhQgLk8RUw=",
+			"checksumSHA1": "kdqtQKFXQf07Kz/OAkTDQ9ebxvc=",
 			"path": "github.com/aboutsko/medium",
-			"revision": "070e6ba17b04f3b2ee8d77e2cff52a5d58f5ce13",
-			"revisionTime": "2017-07-19T20:14:33Z"
+			"revision": "baf8af7ca4b8e476c308a5ba52d47ad7ea48c844",
+			"revisionTime": "2017-07-25T12:53:55Z"
 		},
 		{
 			"checksumSHA1": "T1C06LmkZjReTIjKQJYeXUvhUkU=",

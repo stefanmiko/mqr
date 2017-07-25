@@ -2,6 +2,7 @@ package medium
 
 import "fmt"
 
+//Post is a part of an article
 type Post struct {
 	Description    string   `json:"description"`
 	Title          string   `json:"title"`
