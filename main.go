@@ -5,10 +5,15 @@ import (
 	"os"
 
 	"github.com/aboutsko/medium"
+	"github.com/aboutsko/mqr/formatter"
 )
 
 func getMostPopular() (*medium.Article, error) {
-	return medium.GetMostPopularPosts()
+	article, err := medium.GetMostPopularPosts()
+	if err != nil {
+		return nil, err
+	}
+	return article, nil
 }
 
 func getArticles(articles ...string) ([]*medium.Article, error) {
@@ -42,6 +47,13 @@ func main() {
 	}
 
 	for _, article := range articlesToPrint {
-		fmt.Print(article)
+		fmt.Print(formatter.FormatArticle(article, &formatter.FormatOptions{
+			FormatReference:        true,
+			FormatReferenceContent: false,
+			FormatReferenceTitle:   true,
+			FormatReferenceUID:     true,
+			FormatValue:            true,
+			FormatValueURL:         true,
+		}))
 	}
 }
