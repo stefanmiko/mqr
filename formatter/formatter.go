@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/aboutsko/medium"
+	"github.com/bbrks/wrap"
 )
 
 type FormatOptions struct {
@@ -16,13 +17,33 @@ type FormatOptions struct {
 	FormatValueURL         bool
 }
 
+func bold(str string) string {
+	return fmt.Sprintf("\033[1m%s\033[0m", str)
+}
+
+func FormatContent(content *medium.Content, options *FormatOptions) string {
+	formatted := ""
+	if content == nil || content.BodyModel == nil {
+		return ""
+	}
+	for _, paragraph := range content.BodyModel.Paragraphs {
+		wrappedText := wrap.Wrap(paragraph.Text, 80)
+		if paragraph.Type > 2 {
+			formatted = fmt.Sprintf("%s%s\n", formatted, bold(wrappedText))
+		} else {
+			formatted = fmt.Sprintf("%s%s\n", formatted, wrappedText)
+		}
+	}
+	return formatted
+}
+
 func FormatValue(value *medium.Value, options *FormatOptions) string {
 	formatted := ""
 	if options.FormatValueURL {
 		formatted = fmt.Sprintf("%s\nurl: %s \n", formatted, value.CanonicalURL)
 	}
 
-	formatted = fmt.Sprintf("%s%s\n", formatted, value.Content)
+	formatted = fmt.Sprintf("%s%s\n", formatted, FormatContent(value.Content, options))
 	return formatted
 }
 
@@ -30,7 +51,7 @@ func FormatReference(reference *medium.References, options *FormatOptions) strin
 	formatted := ""
 	for uid, post := range reference.Posts {
 		if options.FormatReferenceUID {
-			formatted = fmt.Sprintf("%s%s\t", formatted, uid)
+			formatted = fmt.Sprintf("%s%s\t", formatted, bold(uid))
 		}
 		if options.FormatReferenceTitle {
 			formatted = fmt.Sprintf("%s%s\n", formatted, post.Title)
