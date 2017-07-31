@@ -1,22 +1,19 @@
 # mqr
 
-Medium Quick Reader
+    mqr makes reading medium in your terminal easy and friendly
 
-# Demo
+    Usage:
+    mqr [flags]
+    mqr [command]
 
-![alt text](https://raw.githubusercontent.com/aboutsko/mqr/master/resources/demo.gif)
+    Available Commands:
+    get         get fetches an article
+    help        Help about any command
+    search      search fetches posts listing from your query
 
+    Flags:
+        --config string   config file (default is $HOME/.mqr.yaml)
+    -h, --help            help for mqr
+    -t, --toggle          Help message for toggle
 
-# Usage
-
-    # To list most popular articles
-    $ ./mqr 
-    9d47995126a2 Why you should care about Net Neutrality
-    This image does a good job illustrating what the net neutrality discussion is
-    all about (thanks to Software Engineering daily).
-    ...
-
-    # To read one particular article using UID seen above
-    $ ./mqr 9d47995126a2
-    Why you should care about Net Neutrality
-    ...
+    Use "mqr [command] --help" for more information about a command.
