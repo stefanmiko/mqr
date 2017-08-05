@@ -37,6 +37,21 @@ func FormatContent(content *medium.Content, options *FormatOptions) string {
 	return formatted
 }
 
+func FormatPost(postUID string, post *medium.Post, options *FormatOptions) string {
+	formatted := ""
+	if options.FormatReferenceUID {
+		formatted = fmt.Sprintf("%s%s\t", formatted, bold(postUID))
+	}
+	if options.FormatReferenceTitle {
+		formatted = fmt.Sprintf("%s%s\n", formatted, post.Title)
+	}
+
+	if options.FormatReferenceContent {
+		formatted = fmt.Sprintf("%s\n%s\n", formatted, post.PreviewContent)
+	}
+	return formatted
+}
+
 func FormatValue(value *medium.Value, options *FormatOptions) string {
 	formatted := ""
 	if options.FormatValueURL {
@@ -44,22 +59,18 @@ func FormatValue(value *medium.Value, options *FormatOptions) string {
 	}
 
 	formatted = fmt.Sprintf("%s%s\n", formatted, FormatContent(value.Content, options))
+
+	for uid, post := range value.Posts {
+		formatted = fmt.Sprintf("%s%s", formatted, FormatPost(uid, post, options))
+	}
+
 	return formatted
 }
 
 func FormatReference(reference *medium.References, options *FormatOptions) string {
 	formatted := ""
 	for uid, post := range reference.Posts {
-		if options.FormatReferenceUID {
-			formatted = fmt.Sprintf("%s%s\t", formatted, bold(uid))
-		}
-		if options.FormatReferenceTitle {
-			formatted = fmt.Sprintf("%s%s\n", formatted, post.Title)
-		}
-
-		if options.FormatReferenceContent {
-			formatted = fmt.Sprintf("%s\n%s\n", formatted, post.PreviewContent)
-		}
+		formatted = fmt.Sprintf("%s%s", formatted, FormatPost(uid, post, options))
 	}
 
 	return formatted
